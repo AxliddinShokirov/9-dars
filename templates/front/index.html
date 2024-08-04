@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zxx">
+    {%load static %}
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="img/favicon.png">
+		<title>Ales</title>
+		<link rel="stylesheet" href="{% static 'fronts/css/bootstrap.min.css'%}">
+		<link rel="stylesheet" href="{% static 'fronts/css/line-awesome.min.css'%}">
+		<link rel="stylesheet" href="{% static 'fronts/css/magnific-popup.css'%}">
+		<link rel="stylesheet" href="{% static 'fronts/css/swiper.min.css'%}">
+		<link rel="stylesheet" href="{% static 'fronts/css/style.css'%}">
+	</head>
+	<body>
+		
+		<!-- loader -->
+		<div class="loader">
+	      	<div class="loading">
+		        <div class="spinner-grow aloader" role="status">
+		      		<span class="sr-only"></span>
+		    	</div>
+		    </div>
+	    </div>
+		<!-- end loader -->
+
+
+		<!-- navbar -->
+		<div id="navbar" class="navbar navbar-expand-lg justify-content-center align-items-center">
+			<div class="container">
+				 <a href="#" class="navbar-brand"><img src="{% static 'fronts/img/logo.png'%}" alt=""></a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			        <i class="la la-bars"></i>
+			    </button>
+
+			    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			    	<ul class="navbar-nav nav">
+						<li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+						<li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+						<li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+						<li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+						<li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+					</ul>
+					<ul class="nav list-unstyled d-flex mb-0"> 
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item mx-2">
+                            <a href="{% url 'index' %}" class="nav-link text-light px-3 py-2 rounded">Admin</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item me-2">
+                            <a href="{% url 'login' %}" class="btn btn-outline-primary rounded-pill px-3">Login</a>
+                        </li>
+                        <li class="nav-item me-2">
+                            <a href="{% url 'register' %}" class="btn btn-outline-secondary rounded-pill px-3">Register</a>
+                        </li>
+                        {% endif %}
+                        </ul>
+			    </div>
+			   
+			    <ul class="button-navbar">
+			    	<li><button class="button">Join Now</button></li>
+			    </ul>
+			</div>
+		</div>
+		<!-- end navbar -->
+
+
+		<!-- intro -->
+		<div id="home" class="intro">
+			<div class="container">
+				<div class="content">
+					<div class="row align-items-center">
+						<div class="col-md">
+                            {%for banner in banner%}
+							<div class="content-text">
+                                <span>Fitness and gym center</span>
+								<h1>{{banner.title}}</h1>
+								<div class="entry">
+                                    <p>{{banner.body}}</p>
+									<button class="button">Nima bu</button>
+								</div>
+                                
+                            
+                        </div>
+                        {% endfor %}
+						</div>
+                        
+						<div class="col-md">
+							
+								<img src="{{img.img.url}}" alt="">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end intro -->
+
+		<!-- about -->
+		<div id="about" class="about">
+            
+			<div class="container">
+        	<div class="row g-5">
+	        		<div class="col-md-7">
+						<div class="content-left">
+							<img src="{{catgory.image.url}}" alt="">
+                            <h2>{{catgory.title}}</h2>
+						</div>
+    
+					</div>
+                   
+					<div class="col-md">
+						<div class="content-right">
+							<img src="{{gyms.image.url}}" alt="">
+							<p>{{gyms.title}}</p>
+							<button class="button">Contact us</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end about -->
+
+		<!-- gallery -->
+		<div id="gallery" class="gallery">
+			<div class="container">
+				<h2>Sport zallari</h2>
+				<div class="divider"></div>
+				<div class="row g-5">
+                    {%for gyms in gym %}
+					<div class="col-md-4">
+						<a href="img/gallery1.png" class="popup-image"><img src="{{gyms.image.url}}"></a>
+                        <p>{{gyms.title}}</p>
+                    </div>	
+                    {% endfor %}
+				</div>
+			</div>
+		</div>
+		<!-- end gallery -->
+
+		<!-- pricing -->
+		<div id="pricing" class="pricing">
+			<div class="container">
+				<div class="row g-5">
+					<div class="col-md col-md-left">
+						<div class="content-left">
+							<h2>Choose Our <br>Plans</h2>
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, distinctio minima voluptatum</p>
+						</div>
+					</div>
+					<div class="col-md">
+						<div class="content">
+							<h4>Monthly</h4>
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
+							<ul>
+								<li><i class="la la-check-circle"></i> Instructor</li>
+								<li><i class="la la-check-circle"></i> Free Drink</li>
+								<li><i class="la la-check-circle"></i> Get Supplement</li>
+								<li><i class="la la-check-circle"></i> Free Support</li>
+							</ul>
+							<h2>$35</h2>
+							<button class="button">Choose Now</button>
+						</div>
+					</div>
+					<div class="col-md">
+						<div class="content">
+							<h4>Annual</h4>
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
+							<ul>
+								<li><i class="la la-check-circle"></i> Instructor</li>
+								<li><i class="la la-check-circle"></i> Free Drink</li>
+								<li><i class="la la-check-circle"></i> Get Supplement</li>
+								<li><i class="la la-check-circle"></i> Free Support</li>
+							</ul>
+							<h2>$350</h2>
+							<button class="button">Choose Now</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end pricing -->
+
+		<!-- contact -->
+		<div id="contact" class="contact">
+			<div class="container">
+				<div class="content-map">
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.3059353029!2d-74.25986548248684!3d40.69714941932609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sKota%20New%20York%2C%20New%20York%2C%20Amerika%20Serikat!5e0!3m2!1sid!2sid!4v1639286790548!5m2!1sid!2sid" height="510" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+				</div>
+				<div class="row g-5">
+					<div class="col-md col-sm-12">
+						<h2>Get In Touch</h2>
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Voluptates dignissimos nesciunt repellat minus vero molestiae, magnam sed provident similique distinctio.</p>
+						
+						<div class="row">
+							<div class="col">
+								<div class="icon"><i class="la la-phone"></i></div>
+								<div class="text">
+									<h5>Phone</h5>
+									<span>{{contact.phone}} </span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<div class="icon"><i class="la la-envelope"></i></div>
+								<div class="text">
+									<h5>Email</h5>
+									<span>{{contact.email}} </span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<div class="icon"><i class="la la-university"></i></div>
+								<div class="text">
+									<h5>Manzil</h5>
+									<span>{{contact.address }}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+                    
+					<div class="col-md col-sm-12">
+						<div class="open">
+							<img src="{{gyms.image.url}}">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end contact -->
+		
+
+		<!-- testimonial -->
+		<div id="testimonial" class="testimonial">
+			<div class="container">
+				<div class="swiper mySwiper">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<div class="content">
+								<p>Lorem ipsum, dolor sit amet consectetur, adipisicing elit. Voluptas quis vel asperiores incidunt illum placeat ab, ex iste reprehenderit ipsa commodi reicien ipsum, dolor sit amet consectetur, adipisicing elit. Voluptas quis vel asperiores incidunt illum </p>
+								<div class="text">
+									<h5>John Doe</h5>
+									<span>Directur</span>
+								</div>
+							</div>
+						
+					<div class="swiper-button-prev prev-slide"></div>
+  					<div class="swiper-button-next next-slide"></div>
+				</div>
+			</div>
+		</div>
+		<!-- end testimonial -->
+
+		
+
+		<!-- footer -->
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-md col-sm-6">
+						<ul>
+							<li><a href="https://www.instagram.com/axl1dd1n_05/"><i class="la la-facebook"></i></a></li>
+							<li><a href="https://x.com/?lang=ru"><i class="la la-twitter"></i></a></li>
+							<li><a href="https://www.instagram.com/axl1dd1n_05/"><i class="la la-instagram"></i></a></li>
+							<li><a href="https://www.youtube.com/watch?v=QBSr3Uwktjo"><i class="la la-youtube"></i></a></li>
+						</ul>
+					</div>
+					<div class="col-md col-sm-6">
+						<div class="cp">
+							<span> Copyright © All Right Reserved </span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- end footer -->
+
+		<!-- script -->
+		<script src="{% static 'fronts/js/jquery.min.js'%}"></script>
+		<script src="{% static 'fronts/js/bootstrap.bundle.min.js'%}"></script>
+		<script src="{% static 'fronts/js/jquery.filterizr.min.js'%}"></script>
+		<script src="{% static 'fronts/js/magnific-popup.min.js'%}"></script>
+		<script src="{% static 'fronts/js/swiper.min.js'%}"></script>
+		<script src="{% static 'fronts/js/main.js'%}"></script>
+		
+		
+	</body>
+</html>
