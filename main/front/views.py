@@ -10,9 +10,17 @@ def front(request):
     img=models.Banner.objects.last()
     gym=models.Gym.objects.all()
     gyms=models.Gym.objects.last()
+    
+ 
    
     
-    return render(request, 'front/index.html', {'banner': banner, 'products': products , 'catgory': catgory, 'contact': contact, 'info': info, 'img': img, 'gym': gym, 'gyms': gyms})
+    return render(request, 'front/index.html', {'banner': banner, 'products': products , 'catgory': catgory,
+                                                 'contact': contact, 'info': info, 'img': img, 'gym': gym, 
+                                                 'gyms': gyms, })
+def coach(request):
+    coach=models.Coach.objects.all()
+    return render(request, 'front/coach/coach.html', {'coach': coach})
+
 
 
 

@@ -1,8 +1,8 @@
  
-# from django.urls import path , include
+from django.urls import path , include
 
-# urlpatterns =[
+urlpatterns =[
 
-#     path('banner_crud', include('Banner.urls') )
+    path('categ/', include('main.Crud.category.urls') )
 
-# ]
+]

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Product</title>
+    <link rel="stylesheet" href="{% static 'assets/css/productCreate.css' %}">
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data" class="product-form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" placeholder="Enter product title" required>
+        </div>
+        <div class="form-group">
+            <label for="sub_title">Subtitle</label>
+            <input type="text" id="sub_title" name="sub_title" placeholder="Enter product subtitle" required>
+        </div>
+        <div class="form-group">
+            <label for="image">Image</label>
+            <input type="file" id="image" name="image" required>
+        </div>
+        <button type="submit" class="submit-button">Save Product</button>
+    </form>
+</body>
+</html>

@@ -1,10 +1,9 @@
-
-from django.urls import path , include
+from django.urls import path
 from . import views
-
 urlpatterns = [
-    path('banner_list', views.banner_lits, name='banner_list'),
-    path('banner_create', views.banner_create, name='banner_create'),
-    path('banner_delete/<int:pk>', views.banner_detail, name='banner_delete'),
-    path('banner_detail/<int:pk>', views.banner_delete, name='banner_detail'),
-    ]
+    path('list/', views.listBanner, name='listBanner'),
+    path('detail/<int:id>/', views.detailBanner, name='detailBanner'),
+    path('create/', views.createBanner, name='createBanner'),
+    path('update/<int:id>', views.updateBanner, name='updateBanner'),
+    path('delete/<int:id>', views.deleteBanner, name='deleteBanner'),
+]

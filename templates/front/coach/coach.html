@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zxx">
+    {%load static %}
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="img/favicon.png">
+		<title>Ales</title>
+		<link rel="stylesheet" href="{% static 'fronts/css/bootstrap.min.css'%}">
+		<link rel="stylesheet" href="{% static 'fronts/css/line-awesome.min.css'%}">
+		<link rel="stylesheet" href="{% static 'fronts/css/magnific-popup.css'%}">
+		<link rel="stylesheet" href="{% static 'fronts/css/swiper.min.css'%}">
+		<link rel="stylesheet" href="{% static 'fronts/css/style.css'%}">
+	</head>
+<body>
+    <div id="gallery" class="gallery">
+        <div class="container">
+            <h2>Sport zallari</h2>
+            <div class="divider"></div>
+            <div class="row g-5">
+                {%for i in coach %}
+                <div class="col-md-4">
+                    <a href="img/gallery1.png" class="popup-image"><img src="{{i.image.url}}"></a>
+                    <p>{{i.sport_name}}</p>
+                    <p>{{i.name}}</p>{{i.age}} 
+                    <p>{{i.title}}</p>
+                </div>	
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

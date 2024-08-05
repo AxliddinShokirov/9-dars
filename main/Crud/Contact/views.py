@@ -9,7 +9,7 @@ def contact_update(request):
             return redirect('contact')
     else:
         form = models.Contact()
-        return render(request, 'contact/update.html', {'form': form})
+        return render(request, 'deshboard/contact', {'form': form})
     
 def contact_delete(request):
     if request.method == 'POST':

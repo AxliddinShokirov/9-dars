@@ -18,13 +18,28 @@ class Category(models.Model):
     name = models.CharField(max_length=255)
     title = models.TextField()
     image = models.ImageField(upload_to='media/')
+    
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name
+
+class Coach(models.Model):
+    name=models.CharField(max_length=255)
+    age=models.IntegerField()
+    title=models.CharField(max_length=255)
+    sports_name=models.CharField(max_length=255)
+    image=models.ImageField(upload_to='media/')
+    is_active = models.BooleanField(default=True)
+
+
+
 class Gym(models.Model):
     name = models.CharField(max_length=255)
     title=models.TextField()
     image=models.ImageField(upload_to='meida/')
+    is_active = models.BooleanField(default=True)
+
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
@@ -48,6 +63,13 @@ class Contact(models.Model):
     message = models.TextField()
     def __str__(self):
         return self.name
+class Blog_name(models.Model):
+    name = models.CharField(max_length=255)
+    title=models.CharField(max_length=255)
+    age=models.IntegerField()
+    image=models.ImageField(upload_to='blog_img/')
+    def __str__(self):
+        return self.name
     
 class ProductEnter(models.Model):
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True, related_name='entries')
@@ -58,6 +80,8 @@ class ProductEnter(models.Model):
 
     def __str__(self):
         return f"{self.product.name} - {self.quantity}"
+
+   
 
     def save(self, *args, **kwargs):
         with transaction.atomic():

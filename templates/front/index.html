@@ -58,7 +58,7 @@
 			    </div>
 			   
 			    <ul class="button-navbar">
-			    	<li><button class="button">Join Now</button></li>
+					<a href="{% url 'coach' %}" class="btn btn-outline-primary rounded-pill px-3">Murabbiylar</a>
 			    </ul>
 			</div>
 		</div>
@@ -103,8 +103,8 @@
         	<div class="row g-5">
 	        		<div class="col-md-7">
 						<div class="content-left">
-							<img src="{{catgory.image.url}}" alt="">
-                            <h2>{{catgory.title}}</h2>
+							<img src="{{gyms.image.url}}" alt="">
+                            <h2>{{gyms.title}}</h2>
 						</div>
     
 					</div>
@@ -144,36 +144,37 @@
 				<div class="row g-5">
 					<div class="col-md col-md-left">
 						<div class="content-left">
-							<h2>Choose Our <br>Plans</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, distinctio minima voluptatum</p>
+							<h2>Bizni tanlang <br>Rejalar:</h2>
+							<p>Sizni murabbiy bilan tamilash<br>
+							Bosh vatingizda kelishingiz<br></p>
 						</div>
 					</div>
 					<div class="col-md">
 						<div class="content">
-							<h4>Monthly</h4>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
+							<h4>Oylik</h4>
+							<p>Ko'rib tanishib chiqing</p>
 							<ul>
-								<li><i class="la la-check-circle"></i> Instructor</li>
-								<li><i class="la la-check-circle"></i> Free Drink</li>
-								<li><i class="la la-check-circle"></i> Get Supplement</li>
-								<li><i class="la la-check-circle"></i> Free Support</li>
+								<li><i class="la la-check-circle"></i> O'qituvchi</li>
+								<li><i class="la la-check-circle"></i> Bepul Ichimlik</li>
+								<li><i class="la la-check-circle"></i>Qo'shimchani Oling</li>
+								<li><i class="la la-check-circle"></i> Bepul Yordam</li>
 							</ul>
 							<h2>$35</h2>
-							<button class="button">Choose Now</button>
+                            <a href="{% url 'coach' %}" class="btn btn-outline-primary rounded-pill px-3">Murabbiylar</a>
 						</div>
 					</div>
 					<div class="col-md">
 						<div class="content">
-							<h4>Annual</h4>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
+							<h4>Yillik</h4>
 							<ul>
-								<li><i class="la la-check-circle"></i> Instructor</li>
-								<li><i class="la la-check-circle"></i> Free Drink</li>
-								<li><i class="la la-check-circle"></i> Get Supplement</li>
-								<li><i class="la la-check-circle"></i> Free Support</li>
+								<li><i class="la la-check-circle"></i> O'qituvchi</li>
+								<li><i class="la la-check-circle"></i> Bepul Ichimlik</li>
+								<li><i class="la la-check-circle"></i> Qo'shimchani oling</li>
+								<li><i class="la la-check-circle"></i> Bepul yordam</li>
 							</ul>
 							<h2>$350</h2>
-							<button class="button">Choose Now</button>
+							
+                            <a href="{% url 'coach' %}" class="btn btn-outline-primary rounded-pill px-3">Murabbiylar</a>
 						</div>
 					</div>
 				</div>
@@ -189,8 +190,8 @@
 				</div>
 				<div class="row g-5">
 					<div class="col-md col-sm-12">
-						<h2>Get In Touch</h2>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Voluptates dignissimos nesciunt repellat minus vero molestiae, magnam sed provident similique distinctio.</p>
+						<h2>Aloqa qiling</h2>
+						<p>24/7 aloqada hizmatingizdamiz</p>
 						
 						<div class="row">
 							<div class="col">

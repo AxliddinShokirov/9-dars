@@ -1,39 +1,58 @@
-from django.shortcuts import render,  redirect
-from main import models 
+from django.shortcuts import render, redirect
+from main import models
 
 
-def banner_lits(request):
-    banners = models.Banner.objects.all()
-    return render(request,'deshboard/crud/list.html', {'banners': banners})
+def listBanner(request):
+    queryset = models.Banner.objects.all()
+    context = {}
+    context['queryset'] = queryset
 
-def banner_detail(request, banner_id):
-    banner = models.Banner.objects.get(pk=banner_id)
-    return render(request,'deshboard/crud/detail.html', {'banner': banner})
+    return render(request, 'deshboard/crude/banner/list.html', context)
 
-def banner_create(request):
+
+def detailBanner(request, id):
+    queryset = models.Banner.objects.get(id=id)
+    context = {}
+    context['queryset'] = queryset
+
+    return render(request, 'deshboard/crude/banner/detail.html', context)
+
+
+def createBanner(request):
     if request.method == 'POST':
-        form = models.Banner(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('banner_list')
-    else:
-        form = models.Banner()
-    return render(request,'main/banner_form.html', {'form': form})
+        banner = models.Banner.objects.create(
+            title = request.POST['title'],
+            sub_title = request.POST['sub_title'],
+            img = request.FILES.get('image')
+        )
+        return redirect('listBanner')
+    return render(request, 'deshboard/crude/banner/create.html')
 
-def banner_update(request, banner_id):
-    banner = models.Banner.objects.get(pk=banner_id)
+
+def updateBanner(request, id):
+    data = models.Banner.objects.get(id=id)
+
+    context = {
+        'data': data
+    }
+
     if request.method == 'POST':
-        form = models.Banner(request.POST, request.FILES, instance=banner)
-        if form.is_valid():
-            form.save()
-            return redirect('banner_detail', banner_id=banner_id)
-    else:
-        form = models.Banner(instance=banner)
-    return render(request,'main/banner_form.html', {'form': form})
+        data.title = request.POST.get('title', data.title)
+        data.sub_title = request.POST.get('sub_title', data.sub_title)
+        img_file = request.FILES.get('image')
+        data.img = img_file
+        
+        for key, value in request.FILES.items():
+            print(f'File key: {key}, File: {value}')
 
-def banner_delete(request, banner_id):
-    banner = models.Banner.objects.get(pk=banner_id)
-    banner.delete()
-    return redirect('banner_list')
+        data.save()
+        return redirect('listBanner')
+    
+    return render(request, 'deshboard/crude/banner/update.html', context)
 
 
+
+
+def deleteBanner(request, id):
+    models.Banner.objects.get(id=id).delete()
+    return redirect('listBanner')

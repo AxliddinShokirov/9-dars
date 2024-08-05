@@ -1,4 +1,48 @@
-{% extends 'deshboard/base.html'%}
+{% extends 'deshboard/base.html' %}
 {% block content %}
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Category delit updet</h4>
+                <p class="card-title-desc">Category</p>
 
-{%endblock%}
+                <div class="table-responsive">
+                    <table class="table mb-0">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>name</th>
+                                <th>mavzu</th>
+                                <th>O'chirish</th>
+                                <th>List</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for categor in catgory %}
+                            <tr class="table-light">
+                                <th scope="row">1</th>
+                                <td>{{ categor.name }}</td>
+                                <td>{{ categor.title }}</td>
+                               
+                               <td> <form method="post" action="{% url 'deleteCategory' categor.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-primary">O'chirish</button>
+                                </form><td>
+                                <td><td> <form method="post" action="{% url 'listCategory'  %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-primary">list</button>
+                                </form></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
